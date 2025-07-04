@@ -1,5 +1,6 @@
 package com.ilbeol.crud.application.usecase;
 
+import com.ilbeol.crud.domain.exception.NoUserFoundException;
 import com.ilbeol.crud.domain.model.User;
 import com.ilbeol.crud.domain.port.input.UserService;
 import com.ilbeol.crud.domain.port.output.UserRepository;
@@ -15,7 +16,15 @@ public class GetUserUseCase implements UserService {
 
     @Override
     public Flux<User> getAllUsers() {
-        return userRepository.findAll();
+        return userRepository.findAll()
+                .collectList()
+                .flatMapMany(users -> {
+                    if (users.isEmpty()) {
+                        return Flux.error(new NoUserFoundException());
+                    } else {
+                        return Flux.fromIterable(users);
+                    }
+                });
     }
 
     @Override

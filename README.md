@@ -21,7 +21,7 @@ Este proyecto implementa un CRUD utilizando:
 
 ### 1. Clonar el repositorio
 ```sh
-git clone https://github.com/AlexsDarn/spring-webflux-backend/tree/main
+git clone https://github.com/jhonEdisonVargas96/crud-backend.git
 cd backend
 ```
 
