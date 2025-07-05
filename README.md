@@ -86,6 +86,27 @@ El frontend estará disponible en `http://localhost:4200`.
 | DELETE | `/users/{id}` | Eliminar un usuario |
 
 
+## Manejo de Errores y Excepciones Personalizadas
+
+El backend implementa un **manejador global de excepciones (`GlobalExceptionHandler`)** que intercepta errores comunes y responde con un mensaje estructurado en formato JSON. Las siguientes excepciones personalizadas están disponibles:
+
+| Excepción                      | Código HTTP | Cuándo se lanza                                                                 |
+|-------------------------------|-------------|----------------------------------------------------------------------------------|
+| `UserNotFoundException`       | `404`       | Cuando se intenta acceder, actualizar o eliminar un usuario inexistente.        |
+| `NoUserFoundException`        | `404`       | Cuando no se encuentran usuarios registrados.                                   |
+| `UserAlreadyExistsException`  | `409`       | Cuando se intenta registrar un usuario con un correo ya existente.              |
+| `Exception` (genérica)        | `500`       | Cuando ocurre un error inesperado en el servidor.                              |
+
+### Formato de respuesta de error (ejemplo)
+
+```json
+{
+  "error": "Usuarios no encontrados",
+  "message": "No se encontraron usuarios en la base de datos",
+  "status": 404
+}
+```
+
 ## Tecnologías Utilizadas
 ### Backend
 - Java 21
