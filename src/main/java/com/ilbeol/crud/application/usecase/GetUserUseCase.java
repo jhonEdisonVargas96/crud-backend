@@ -1,6 +1,8 @@
 package com.ilbeol.crud.application.usecase;
 
 import com.ilbeol.crud.domain.exception.NoUserFoundException;
+import com.ilbeol.crud.domain.exception.UserAlreadyExistsException;
+import com.ilbeol.crud.domain.exception.UserNotFoundException;
 import com.ilbeol.crud.domain.model.User;
 import com.ilbeol.crud.domain.port.input.UserService;
 import com.ilbeol.crud.domain.port.output.UserRepository;
@@ -17,25 +19,19 @@ public class GetUserUseCase implements UserService {
     @Override
     public Flux<User> getAllUsers() {
         return userRepository.findAll()
-                .collectList()
-                .flatMapMany(users -> {
-                    if (users.isEmpty()) {
-                        return Flux.error(new NoUserFoundException());
-                    } else {
-                        return Flux.fromIterable(users);
-                    }
-                });
+                .switchIfEmpty(Flux.error(new NoUserFoundException()));
     }
 
     @Override
     public Mono<User> getUserById(Long id) {
-        return userRepository.findById(id);
+        return userRepository.findById(id)
+                .switchIfEmpty(Mono.error(new UserNotFoundException("Usuario con ID " + id + " no existe")));
     }
 
     @Override
     public Mono<User> createUser(User user) {
         return userRepository.findByEmailAddress(user.getEmailAddress())
-                .flatMap(existingUser -> Mono.error(new IllegalStateException("User already exists")))
+                .flatMap(existingUser -> Mono.error(new UserAlreadyExistsException(user.getEmailAddress())))
                 .switchIfEmpty(userRepository.save(user))
                 .cast(User.class);
     }
@@ -43,6 +39,7 @@ public class GetUserUseCase implements UserService {
     @Override
     public Mono<User> updateUser(Long id, User user) {
         return userRepository.findById(id)
+                .switchIfEmpty(Mono.error(new UserNotFoundException("No se encontró un usuario con el ID " + id)))
                 .flatMap(existingUser -> {
                     existingUser.setFirstName(user.getFirstName());
                     existingUser.setLastName(user.getLastName());
@@ -57,6 +54,8 @@ public class GetUserUseCase implements UserService {
 
     @Override
     public Mono<Void> deleteUser(Long id) {
-        return userRepository.deleteById(id);
+        return userRepository.findById(id)
+                .switchIfEmpty(Mono.error(new UserNotFoundException("No se encontró un usuario con el ID " + id)))
+                .flatMap(user -> userRepository.deleteById(id));
     }
 }
