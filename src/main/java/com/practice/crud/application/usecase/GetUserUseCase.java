@@ -1,11 +1,11 @@
-package com.ilbeol.crud.application.usecase;
+package com.practice.crud.application.usecase;
 
-import com.ilbeol.crud.domain.exception.NoUserFoundException;
-import com.ilbeol.crud.domain.exception.UserAlreadyExistsException;
-import com.ilbeol.crud.domain.exception.UserNotFoundException;
-import com.ilbeol.crud.domain.model.User;
-import com.ilbeol.crud.domain.port.input.UserService;
-import com.ilbeol.crud.domain.port.output.UserRepository;
+import com.practice.crud.domain.exception.NoUserFoundException;
+import com.practice.crud.domain.exception.UserAlreadyExistsException;
+import com.practice.crud.domain.exception.UserNotFoundException;
+import com.practice.crud.domain.model.User;
+import com.practice.crud.domain.port.input.UserService;
+import com.practice.crud.domain.port.output.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

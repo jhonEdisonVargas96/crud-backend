@@ -1,14 +1,12 @@
-package com.ilbeol.crud.domain.model;
+package com.practice.crud.domain.model;
 
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @Builder

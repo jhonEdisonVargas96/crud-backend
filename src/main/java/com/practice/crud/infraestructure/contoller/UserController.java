@@ -1,7 +1,7 @@
-package com.ilbeol.crud.infraestructure.contoller;
+package com.practice.crud.infraestructure.contoller;
 
-import com.ilbeol.crud.domain.model.User;
-import com.ilbeol.crud.domain.port.input.UserService;
+import com.practice.crud.domain.model.User;
+import com.practice.crud.domain.port.input.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;

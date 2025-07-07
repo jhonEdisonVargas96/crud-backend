@@ -1,8 +1,8 @@
-package com.ilbeol.crud.infraestructure.handler;
+package com.practice.crud.infraestructure.handler;
 
-import com.ilbeol.crud.domain.exception.NoUserFoundException;
-import com.ilbeol.crud.domain.exception.UserAlreadyExistsException;
-import com.ilbeol.crud.domain.exception.UserNotFoundException;
+import com.practice.crud.domain.exception.NoUserFoundException;
+import com.practice.crud.domain.exception.UserAlreadyExistsException;
+import com.practice.crud.domain.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

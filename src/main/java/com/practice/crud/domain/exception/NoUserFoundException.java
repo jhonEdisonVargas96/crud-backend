@@ -1,4 +1,4 @@
-package com.ilbeol.crud.domain.exception;
+package com.practice.crud.domain.exception;
 
 public class NoUserFoundException  extends RuntimeException{
 

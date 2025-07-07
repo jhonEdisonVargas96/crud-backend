@@ -1,7 +1,7 @@
-package com.ilbeol.crud.infraestructure.adapter;
+package com.practice.crud.infraestructure.adapter;
 
-import com.ilbeol.crud.domain.model.User;
-import com.ilbeol.crud.domain.port.output.UserRepository;
+import com.practice.crud.domain.model.User;
+import com.practice.crud.domain.port.output.UserRepository;
 import org.springframework.data.r2dbc.repository.R2dbcRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

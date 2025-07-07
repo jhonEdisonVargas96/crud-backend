@@ -1,4 +1,4 @@
-package com.ilbeol.crud.infraestructure.config;
+package com.practice.crud.infraestructure.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

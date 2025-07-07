@@ -1,6 +1,6 @@
-package com.ilbeol.crud.domain.port.output;
+package com.practice.crud.domain.port.output;
 
-import com.ilbeol.crud.domain.model.User;
+import com.practice.crud.domain.model.User;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
