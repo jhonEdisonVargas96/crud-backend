@@ -1,4 +1,4 @@
-package com.ilbeol.crud;
+package com.practice.crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

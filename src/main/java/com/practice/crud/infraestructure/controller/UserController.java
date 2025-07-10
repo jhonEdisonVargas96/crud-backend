@@ -1,4 +1,4 @@
-package com.practice.crud.infraestructure.contoller;
+package com.practice.crud.infraestructure.controller;
 
 import com.practice.crud.domain.model.User;
 import com.practice.crud.domain.port.input.UserService;
